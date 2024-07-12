@@ -1,38 +1,127 @@
-.App {
+*,
+::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Navigation */
+
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background: #498353;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 15px 20px -5px;
+}
+
+nav ul {
+  width: 100%;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav ul li {
+  position: relative;
+  width: 140px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
+  user-select: none;
+  cursor: pointer;
+  margin: 0 15px;
+  border: 2px solid #f2c75c;
+  overflow: hidden;
+}
+ul li a {
+  font-size: 16px;
+  text-transform: uppercase;
+  color: #f2c75c;
+  z-index: 10;
+  text-decoration: none;
+  transition: color 200ms ease;
+}
+.item:hover a {
+  color: #003b49;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.item:before {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 100%;
+  transform: skew(30deg);
+  background: #f2c75c;
+  transition: width 400ms ease;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.item:hover:before {
+  width: 120%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.item:nth-child(2):before {
+  transform: skew(-20deg);
+}
+
+.item:nth-child(3):before {
+  transform: skew(0deg);
+}
+
+.item:nth-child(4):before {
+  width: 180px;
+  height: 0%;
+  bottom: 0px;
+  transition: height 400ms ease;
+}
+
+.item:nth-child(4):hover:before {
+  height: 100%;
+}
+
+/* Common CSS */
+.wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 1em;
+  margin: 2rem;
+}
+
+
+/* Vegetable CSS */
+.vegetable {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  width: 300px;
+  height: 300px;
+  background-color: rgb(44, 190, 231);
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.vegetable-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 1em;
+}
+.vegetable-actions button {
+  border: none;
+  color: white;
+  padding: 1em 3em;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+}
+.vegetable-actions button:first-child {
+  background-color: #04AA6D;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.vegetable-actions button:last-child {
+  background-color: #ec3622;
 }

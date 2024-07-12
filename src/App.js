@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import VegeIndex from './components/Vegetable';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import Blog from './components/Blog/Blog';
+import BlogList from './components/Blog/BlogList';
+import Navigation from './components/Navigation';
+import NotFound from './components/NotFound';
+
+const App = () => (
+  <BrowserRouter>
+    <Navigation />    
+    <Routes>
+      <Route path='/' element={<VegeIndex />} />
+      <Route path='/blogs' element={<BlogList />} />
+      <Route path='/blogs/:blogId' element={<Blog />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+  </BrowserRouter>
+);
 
 export default App;
